@@ -51,3 +51,46 @@ function buildName(firstName : string , LastName?: string){
     return firstName + " " + LastName;
 }
 console.log(buildName("jamal"));
+
+
+
+
+
+interface UserInterface{
+    name : string;
+    email : string;
+    avatar?: object
+}
+let jamal : UserInterface = {
+    name : "jamal",
+    email : "jamal13647850@gmail.com"
+};
+function RegisterUser(user : UserInterface) {
+    console.log(user);
+}
+RegisterUser(jamal);
+
+jamal.avatar={
+    src : "img/usr/123.png"
+};
+function ImageUser(user : UserInterface){
+    console.log(user);
+}
+ImageUser(jamal);
+
+interface AuthInterface{
+    register : (user : UserInterface) => boolean;
+    login : (user : UserInterface) => void
+}
+
+class Auth implements AuthInterface{
+    register(user : UserInterface){
+        return true;
+    }
+    login(user : UserInterface){
+
+    }
+}
+
+let AuthObject = new Auth();
+AuthObject.register(jamal);

@@ -43,3 +43,30 @@ function buildName(firstName, LastName) {
     return firstName + " " + LastName;
 }
 console.log(buildName("jamal"));
+var jamal = {
+    name: "jamal",
+    email: "jamal13647850@gmail.com"
+};
+function RegisterUser(user) {
+    console.log(user);
+}
+RegisterUser(jamal);
+jamal.avatar = {
+    src: "img/usr/123.png"
+};
+function ImageUser(user) {
+    console.log(user);
+}
+ImageUser(jamal);
+var Auth = /** @class */ (function () {
+    function Auth() {
+    }
+    Auth.prototype.register = function (user) {
+        return true;
+    };
+    Auth.prototype.login = function (user) {
+    };
+    return Auth;
+}());
+var AuthObject = new Auth();
+AuthObject.register(jamal);
