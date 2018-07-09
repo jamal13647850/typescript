@@ -23,3 +23,23 @@ var anyVar = 5;
 anyVar = "hesam";
 anyVar = true;
 var list3 = [20, "jamal", true];
+function sum(x, y) {
+    return x + y;
+}
+console.log(sum(1, 2));
+var mySum = function (x, y) {
+    return x + y;
+};
+console.log(mySum(5, 2));
+var mySum2;
+mySum2 = function (x, y) {
+    return x + y;
+};
+console.log(mySum2(52, 2));
+function buildName(firstName, LastName) {
+    if (LastName == undefined) {
+        return firstName;
+    }
+    return firstName + " " + LastName;
+}
+console.log(buildName("jamal"));

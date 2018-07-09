@@ -24,3 +24,30 @@ anyVar = "hesam";
 anyVar = true;
 
 let list3 : any[] = [20,"jamal",true];
+
+
+
+function sum(x,y){
+    return x+y;
+}
+console.log(sum(1,2));
+
+let mySum =function(x : number , y : number) : number{
+    return x+y;
+};
+console.log(mySum(5,2));
+
+let mySum2 : (x : number , y :number) => number;
+mySum2 = function (x, y) {
+    return x+y;
+};
+console.log(mySum2(52,2));
+
+
+function buildName(firstName : string , LastName?: string){
+    if(LastName== undefined){
+        return firstName;
+    }
+    return firstName + " " + LastName;
+}
+console.log(buildName("jamal"));
