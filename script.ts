@@ -94,3 +94,9 @@ class Auth implements AuthInterface{
 
 let AuthObject = new Auth();
 AuthObject.register(jamal);
+
+
+
+
+
+
