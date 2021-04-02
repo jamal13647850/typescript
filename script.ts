@@ -25,6 +25,12 @@ const person: {
   };
   console.log(person.name);
 
+// array of object
+let userTestStatus: { id: number, name: string }[] = [
+  { "id": 0, "name": "Available" },
+  { "id": 1, "name": "Ready" },
+  { "id": 2, "name": "Started" }
+];  
 //union type
 function combineun(input1: number | string, input2: number | string) {
     let result;
