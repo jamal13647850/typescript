@@ -1,3 +1,7 @@
+const coloredLog =(text:string)=>{
+  console.log("%c"+text, 'color: red; font-size: larger'); 
+}
+
 let isDone : boolean = true;
 let decimal : number = 20;
 let hex : number = 0xf00d;
@@ -5,17 +9,12 @@ let binary : number = 0b1010;
 
 let fullname : string =  "Sayyed Jamal Ghasemi";
 
-let list : number[] = [1,2,3,4,5];
-let list2 : Array<string> = ["jamal","ghasemi"];
-
-let x : [string,number];
-x = ["hello",10];
-x[2]=10;
-x[3]=20;
-console.log(x);
 
 
-//object type
+
+
+
+//Object type
 const person: {
     name: string;
     age: number;  
@@ -23,16 +22,53 @@ const person: {
     name: 'Maximilian',
     age: 30
   };
-  console.log(person.name);
+coloredLog("Object type"); 
+console.log(person.name);
 
-// array of object
+//Array type
+let list : number[] = [1,2,3,4,5];
+let list2 : Array<string> = ["jamal","ghasemi"];
+coloredLog("Array type"); 
+console.log(list);
+console.log(list2);
+
+//Tuple type 
+let x : [string,number];
+x = ["hello",10];
+// x[2]=10;
+// x[3]=20;
+coloredLog("Tuple type"); 
+console.log(x);
+
+//Array of object
 let userTestStatus: { id: number, name: string }[] = [
   { "id": 0, "name": "Available" },
   { "id": 1, "name": "Ready" },
   { "id": 2, "name": "Started" }
 ];  
+coloredLog("Array of object"); 
+console.log(userTestStatus); 
+
+//Enum type  
+enum Color {Red , Green , Yellow}
+let c : Color = Color.Green;
+let c1 : String = Color[1];
+coloredLog("Enum type"); 
+console.log(c);
+console.log(c1);
+
+//any type
+let anyVar : any = 5;
+anyVar = "hesam";
+anyVar = true;
+
+let list3 : any[] = [20,"jamal",true];
+coloredLog("Any type"); 
+console.log(anyVar); 
+console.log(list3); 
+
 //union type
-function combineun(input1: number | string, input2: number | string) {
+function combineUN(input1: number | string, input2: number | string) {
     let result;
     if (typeof input1 === 'number' && typeof input2 === 'number') {
       result = input1 + input2;
@@ -41,26 +77,36 @@ function combineun(input1: number | string, input2: number | string) {
     }
     return result;
 }
+
+coloredLog("Union type"); 
+console.log(combineUN(2,5));
+console.log(combineUN("Jamal"," Ghasemi"));
+
 //literal type
-function combinelt(
+function combineLT(
     input1: number | string,
     input2: number | string,
-    resultConversion: 'as-number' | 'as-text'
+    resultType: 'as-number' | 'as-text'
   ) {
     let result;
-    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
+    if (typeof input1 === 'number' && typeof input2 === 'number' || resultType === 'as-number') {
       result = +input1 + +input2;
     } else {
       result = input1.toString() + input2.toString();
     }
     return result;
   }  
+
+coloredLog("Literal type"); 
+console.log(combineLT(2,5,'as-number'));
+console.log(combineLT("Jamal"," Ghasemi",'as-text'));
+
 //alias type
 type Combinable = number | string;
 type ConversionDescriptor = 'as-number' | 'as-text';
 type User = { name: string; age: number };
 
-function combineal(
+function combineAL(
     input1: Combinable,
     input2: Combinable,
     resultConversion:ConversionDescriptor
@@ -75,43 +121,12 @@ function combineal(
   } 
 
 
-//enum type  
-enum Color {Red , Green , Yellow}
-let c : Color = Color.Green;
-let c1 : String = Color[1];
-console.log(c,c1);
+  coloredLog("Alias type"); 
+  console.log(combineLT(2,5,'as-number'));
+  console.log(combineLT("Jamal"," Ghasemi",'as-text'));
 
-//any type
-let anyVar : any = 5;
-anyVar = "hesam";
-anyVar = true;
-
-let list3 : any[] = [20,"jamal",true];
-
-//function type
-const myfunc:Function=():number=>{
-    return 5;
-}
-//or
-let myfunc2: () => number;
-const add=()=>{
-    return 5;
-}
-myfunc2 = add
-
-
-
-//callback type
-function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
-    const result = n1 + n2;
-    cb(result);
-}
-
-
-
-
-
-
+//fuction return type
+coloredLog("Function return type"); 
 function sum(x,y){
     return x+y;
 }
@@ -126,7 +141,47 @@ let mySum2 : (x : number , y :number) => number;
 mySum2 = function (x, y) {
     return x+y;
 };
-console.log(mySum2(52,2));
+console.log(mySum2(52,2));  
+
+
+//function type
+const myfunc:Function=():number=>{
+    return 5;
+}
+//or
+let myfunc2: () => number;
+const add=()=>{
+    return 5;
+}
+myfunc2 = add
+
+//or
+let sum2:(num1:number,num2:number)=>number
+sum2=(num1,num2)=>{
+  return num1+num2;
+}
+coloredLog("Function type"); 
+console.log(myfunc);
+console.log(myfunc());
+console.log(myfunc2);
+console.log(myfunc2());
+console.log(sum2(2,4));
+
+//callback type
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+    const result = n1 + n2;
+    cb(result);
+}
+coloredLog("Callback type"); 
+addAndHandle(11,23,(res)=>{
+  console.log(res);
+})
+
+
+
+
+
+
 
 
 function buildName(firstName : string , LastName?: string){
@@ -200,7 +255,8 @@ class AccountingDepartment extends Department {
         this.lastReport=value;
       }
 }
-const accounting = new AccountingDepartment('d2', []);
+const accounting = new AccountingDepartment('d2', "Accounting");
+coloredLog("geter and seter"); 
 console.log(accounting.mostRecentReport);
 
 
